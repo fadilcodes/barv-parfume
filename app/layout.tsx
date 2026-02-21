@@ -1,6 +1,11 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Geist, Geist_Mono, Roboto_Mono } from "next/font/google";
 import "./globals.css";
+import { config } from "@fortawesome/fontawesome-svg-core";
+import "@fortawesome/fontawesome-svg-core/styles.css";
+import { Roboto_Serif } from '@next/font/google';
+
+config.autoAddCss = false;
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -11,6 +16,17 @@ const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
 });
+
+const roboto_serif = Roboto_Serif({
+  subsets: ['latin'],
+  weight: ['200', '300', '400', '500', '700', '900'],
+})
+
+const roboto_mono = Roboto_Mono({
+  subsets: ['latin'],
+  weight: ['200', '300', '400', '500', '700'],
+  variable: '--font-roboto-mono',
+})
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -23,12 +39,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        {children}
-      </body>
+   <html lang="en" className={`${roboto_serif.className} ${roboto_mono.variable}`}>
+      <body>{children}</body>
     </html>
   );
 }

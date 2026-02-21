@@ -1,0 +1,94 @@
+mutation CreateDemoData @transaction @auth(level: USER, insecureReason: "This is a seed data mutation, only to be run by authenticated users for initial data population.") {
+  user_insertMany(data: [
+    {
+      id: "b4b3b2b1-a0a9-8d8c-7b7a-6f6e6d6c6b6a",
+      displayName: "Alice Smith",
+      email: "alice@example.com",
+      bio: "A perfume enthusiast.",
+      createdAt: "2023-01-01T10:00:00Z"
+    },
+    {
+      id: "c5c4c3c2-b1b0-9e9d-8c8b-7a7978777675",
+      displayName: "Bob Johnson",
+      email: "bob@example.com",
+      bio: "Loves fresh scents.",
+      createdAt: "2023-01-02T11:00:00Z"
+    }
+  ])
+  perfume_insertMany(data: [
+    {
+      id: "d6d5d4d3-c2c1-a0a9-9d9c-8b8a89888786",
+      name: "Floral Dream",
+      brand: "Scentopia",
+      description: "A delightful blend of roses and jasmine.",
+      topNotes: "Rose, Bergamot",
+      heartNotes: "Jasmine, Peony",
+      baseNotes: "Musk, Sandalwood",
+      scentFamily: "Floral",
+      imageUrl: "https://example.com/floral_dream.jpg",
+      createdAt: "2023-01-01T10:30:00Z"
+    },
+    {
+      id: "e7e6e5e4-d3d2-b1b0-a9a8-9c9b9a999897",
+      name: "Ocean Breeze",
+      brand: "AquaScents",
+      description: "Refreshing and invigorating, like a walk by the sea.",
+      topNotes: "Sea Salt, Lemon",
+      heartNotes: "Water Lily, Green Tea",
+      baseNotes: "Cedarwood, Amber",
+      scentFamily: "Aquatic",
+      imageUrl: "https://example.com/ocean_breeze.jpg",
+      createdAt: "2023-01-02T11:30:00Z"
+    }
+  ])
+  list_insertMany(data: [
+    {
+      id: "f8f7f6f5-e4e3-d2d1-c0c9-b8b7b6b5b4b3",
+      userId: "b4b3b2b1-a0a9-8d8c-7b7a-6f6e6d6c6b6a",
+      name: "Alice's Favorites",
+      description: "My top perfumes for every occasion.",
+      isPublic: true,
+      createdAt: "2023-01-03T12:00:00Z",
+      updatedAt: "2023-01-03T12:00:00Z"
+    }
+  ])
+  listItem_insertMany(data: [
+    {
+      listId: "f8f7f6f5-e4e3-d2d1-c0c9-b8b7b6b5b4b3",
+      perfumeId: "d6d5d4d3-c2c1-a0a9-9d9c-8b8a89888786",
+      position: 1,
+      note: "Perfect for spring!"
+    },
+    {
+      listId: "f8f7f6f5-e4e3-d2d1-c0c9-b8b7b6b5b4b3",
+      perfumeId: "e7e6e5e4-d3d2-b1b0-a9a8-9c9b9a999897",
+      position: 2,
+      note: "Great for summer days."
+    }
+  ])
+  wearing_insertMany(data: [
+    {
+      id: "g9g8g7g6-f5f4-e3e2-d1d0-c9c8c7c6c5c4",
+      userId: "b4b3b2b1-a0a9-8d8c-7b7a-6f6e6d6c6b6a",
+      perfumeId: "d6d5d4d3-c2c1-a0a9-9d9c-8b8a89888786",
+      wearingDate: "2023-01-04",
+      mood: "Happy",
+      occasion: "Brunch",
+      location: "Cafe",
+      createdAt: "2023-01-04T09:00:00Z"
+    }
+  ])
+  review_insertMany(data: [
+    {
+      id: "h0h9h8h7-g6g5-f4f3-e2e1-d0d9d8d7d6d5",
+      userId: "b4b3b2b1-a0a9-8d8c-7b7a-6f6e6d6c6b6a",
+      perfumeId: "d6d5d4d3-c2c1-a0a9-9d9c-8b8a89888786",
+      wearingId: "g9g8g7g6-f5f4-e3e2-d1d0-c9c8c7c6c5c4",
+      rating: 5,
+      reviewText: "Absolutely love Floral Dream! It's so elegant and long-lasting.",
+      isPublic: true,
+      createdAt: "2023-01-04T13:00:00Z",
+      updatedAt: "2023-01-04T13:00:00Z"
+    }
+  ])
+}

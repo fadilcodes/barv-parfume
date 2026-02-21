@@ -1,0 +1,16 @@
+{
+  "emulators": {
+    "dataconnect": {
+      "dataDir": "dataconnect/.dataconnect/pgliteData"
+    }
+  },
+  "dataconnect": {
+    "source": "dataconnect"
+  },
+
+  "hosting": {
+    "site": "barv",
+
+    "public": "public"
+  }
+}
